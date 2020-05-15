@@ -268,8 +268,8 @@
       "required": true,
       "null_or_empty": false,
       "regex": null,
-      "min": 2,
-      "max": 2
+      "min": null,
+      "max": null
     },
     ,
     {
@@ -278,8 +278,8 @@
       "required": true,
       "null_or_empty": false,
       "regex": null,
-      "min": 2,
-      "max": 2
+      "min": null,
+      "max": null
     },
     {
       "type": "string",
