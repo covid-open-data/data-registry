@@ -2,7 +2,7 @@
   "name": "Continents Case Counts",
   "description": "",
   "filename": {
-    "regex": "^continents.csv$"
+    "regex": "^continents\\.csv$"
   },
   "columns": [
     {

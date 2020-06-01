@@ -2,7 +2,7 @@
   "name": "WHO Regions Case Counts",
   "description": "",
   "filename": {
-    "regex": "^who_regions.csv$"
+    "regex": "^who_regions\\.csv$"
   },
   "columns": [
     {
