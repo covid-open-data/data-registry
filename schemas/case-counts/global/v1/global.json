@@ -2,7 +2,7 @@
   "name": "Global Case Counts",
   "description": "",
   "filename": {
-    "regex": "^global\\.csv$"
+    "regex": ".+(\\.csv)$"
   },
   "columns": [
     {

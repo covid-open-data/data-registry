@@ -2,7 +2,7 @@
   "name": "Admin0 Case Counts",
   "description": "",
   "filename": {
-    "regex": "^admin0\\.csv$"
+    "regex": ".+(\\.csv)$"
   },
   "columns": [
     {
