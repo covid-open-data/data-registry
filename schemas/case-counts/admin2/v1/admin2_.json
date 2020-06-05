@@ -273,7 +273,6 @@
       "min": null,
       "max": null
     },
-    ,
     {
       "type": "string",
       "name": "admin2_code",
