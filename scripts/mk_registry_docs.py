@@ -63,7 +63,7 @@ class GenerateRegistry:
             md_lines.append('Terms of Use: {0}'.format(yml_data['terms_of_use']))
             md_lines.append(os.linesep)
             md_lines.append('#### Outputs')
-            md_lines.append('| | | | | |')
+            md_lines.append('| Description | Type | File | Admin Level | Schema |')
             md_lines.append('|---|---|---|---|---|')
             for output_yml in yml_data['outputs']:
                 md_lines.append('| {} | {} | {} | {} | {} |'.format(

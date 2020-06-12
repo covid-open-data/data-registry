@@ -11,7 +11,7 @@ Terms of Use: https://github.com/CSSEGISandData/COVID-19/blob/master/README.md
 
 
 #### Outputs
-| | | | | |
+| Description | Type | File | Admin Level | Schema |
 |---|---|---|---|---|
 | Daily cumulative case and death counts for all affected countries and territories. | casecounts | output/admin0/all.csv | 0 | https://raw.githubusercontent.com/covid-open-data/data-registry/case-counts-schemas/schemas/case-counts/admin0/v1/admin0.json |
 | Daily cumulative case and death counts for each WHO Region. | casecounts | output/who_regions.csv | who_regions | https://raw.githubusercontent.com/covid-open-data/data-registry/case-counts-schemas/schemas/case-counts/who_regions/v1/who_regions.json |
@@ -27,7 +27,7 @@ Terms of Use: https://github.com/CSSEGISandData/COVID-19/blob/master/README.md
 
 
 #### Outputs
-| | | | | |
+| Description | Type | File | Admin Level | Schema |
 |---|---|---|---|---|
 | Daily cumulative case and death counts for all affected US counties. | case-counts | output/admin2/US.csv | 2 | https://raw.githubusercontent.com/covid-open-data/data-registry/master/schemas/case-counts/admin2/v1/admin2.json |
 | Daily cumulative case and death counts for all US states. | case-counts | output/admin1/US.csv | 1 | https://raw.githubusercontent.com/covid-open-data/data-registry/master/schemas/case-counts/admin1/v1/admin1.json |
@@ -42,7 +42,7 @@ Terms of Use: https://github.com/nytimes/covid-19-data/blob/master/LICENSE
 
 
 #### Outputs
-| | | | | |
+| Description | Type | File | Admin Level | Schema |
 |---|---|---|---|---|
 | Daily cumulative case and death counts for all affected US counties. | casecounts | output/admin2/US.csv | 2 | https://raw.githubusercontent.com/covid-open-data/data-registry/case-counts-schemas/schemas/case-counts/admin2/v1/admin2.json |
 | Daily cumulative case and death counts for all US states. | casecounts | output/admin1/US.csv | 1 | https://raw.githubusercontent.com/covid-open-data/data-registry/case-counts-schemas/schemas/case-counts/admin1/v1/admin1.json |
@@ -57,7 +57,7 @@ Terms of Use: https://usafacts.org/visualizations/coronavirus-covid-19-spread-ma
 
 
 #### Outputs
-| | | | | |
+| Description | Type | File | Admin Level | Schema |
 |---|---|---|---|---|
 | Daily cumulative case and death counts for all affected US counties. | casecounts | output/admin2/US.csv | 2 | https://raw.githubusercontent.com/covid-open-data/data-registry/case-counts-schemas/schemas/case-counts/admin2/v1/admin2.json |
 | Daily cumulative case and death counts for all US states. | casecounts | output/admin1/US.csv | 1 | https://raw.githubusercontent.com/covid-open-data/data-registry/case-counts-schemas/schemas/case-counts/admin1/v1/admin1.json |
