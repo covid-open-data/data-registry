@@ -84,9 +84,9 @@ class GenerateRegistry:
                 md_lines.append('|---|---|---|---|---|')
 
             for output_yml in outputs_yml:
-                output_source_organization = output_yml.get('source_organization', None)
-                output_source_url = output_yml.get('source_url', None)
-                output_terms_of_use = output_yml.get('terms_of_use', None)
+                output_source_organization = output_yml.get('source_organization', '')
+                output_source_url = output_yml.get('source_url', '')
+                output_terms_of_use = output_yml.get('terms_of_use', '')
                 output_description = output_yml['description']
                 output_type = output_yml['type']
                 output_file = output_yml['file']
