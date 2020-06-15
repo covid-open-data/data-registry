@@ -36,16 +36,16 @@ class GenerateRegistry:
 
         with open(md_file_path, mode='w') as f:
             f.writelines(os.linesep.join(md_lines))
+        print('')
         print('Doc created: {0}'.format(md_file_path))
 
     def _add_repos_to_md(self, repo_url, md_lines):
         # Fix up the URL so the local user can SSH clone the repo from GitHub.
         repo_clone_url = repo_url
-        if not repo_clone_url.endswith('.git'):
-            repo_clone_url = repo_clone_url + '.git'
-        if repo_clone_url.startswith('https://github.com/'):
-            repo_clone_url = repo_clone_url.replace('https://github.com/', 'git@github.com:')
+        repo_clone_url = repo_clone_url + '.git'
+        repo_clone_url = repo_clone_url.replace('https://github.com/', 'git@github.com:')
 
+        print('=' * 80)
         print('Processing repo: {0}'.format(repo_clone_url))
         temp_dir = tempfile.mkdtemp()
         try:
@@ -54,32 +54,67 @@ class GenerateRegistry:
 
             xform_yml_path = os.path.join(temp_dir, 'xform.yml')
             if not os.path.isfile(xform_yml_path):
-                print('ERROR: xform.yml not found in: {0}'.format(xform_yml_path))
+                print('WARNING: xform.yml not found.')
                 return False
             yml_data = self.load_yml(xform_yml_path)
             md_lines.append(os.linesep)
             md_lines.append('### {0}'.format(yml_data['source_organization']))
             md_lines.append(os.linesep)
-            md_lines.append('GitHub Repo: {0}'.format(repo_url))
+            md_lines.append('Xform URL: {0}'.format(repo_url))
             md_lines.append(os.linesep)
             md_lines.append('Source: {0}'.format(yml_data['source_url']))
             md_lines.append(os.linesep)
             md_lines.append('Terms of Use: {0}'.format(yml_data['terms_of_use']))
             md_lines.append(os.linesep)
             md_lines.append('#### Outputs')
-            md_lines.append('| Description | Type | File | Admin Level | Schema |')
-            md_lines.append('|---|---|---|---|---|')
-            for output_yml in yml_data['outputs']:
-                md_lines.append('| {} | {} | {} | {} | {} |'.format(
-                    output_yml['description'],
-                    output_yml['type'],
-                    output_yml['file'],
-                    output_yml['admin_level'],
-                    output_yml['schema']
-                ))
+
+            outputs_yml = yml_data['outputs']
+
+            is_extended_table = next(
+                (o for o in outputs_yml if
+                 o.get('source_organization', None) or o.get('source_url', None) or o.get('terms_of_use', None)),
+                None) is not None
+
+            if is_extended_table:
+                md_lines.append(
+                    '| Source Org. | Source | Terms of Use | Description | Type | File | Admin Level | Schema |')
+                md_lines.append('|---|---|---|---|---|---|---|---|')
+            else:
+                md_lines.append('| Description | Type | File | Admin Level | Schema |')
+                md_lines.append('|---|---|---|---|---|')
+
+            for output_yml in outputs_yml:
+                output_source_organization = output_yml.get('source_organization', None)
+                output_source_url = output_yml.get('source_url', None)
+                output_terms_of_use = output_yml.get('terms_of_use', None)
+                output_description = output_yml['description']
+                output_type = output_yml['type']
+                output_file = output_yml['file']
+                output_admin_level = output_yml['admin_level']
+                output_schema = output_yml['schema']
+
+                if is_extended_table:
+                    md_lines.append('| {} | {} | {} | {} | {} | {} | {} | {} |'.format(
+                        output_source_organization,
+                        output_source_url,
+                        output_terms_of_use,
+                        output_description,
+                        output_type,
+                        output_file,
+                        output_admin_level,
+                        output_schema
+                    ))
+                else:
+                    md_lines.append('| {} | {} | {} | {} | {} |'.format(
+                        output_description,
+                        output_type,
+                        output_file,
+                        output_admin_level,
+                        output_schema
+                    ))
 
         except Exception as ex:
-            print('Error cloning repo: {0}'.format(ex))
+            print('Error processing repo: {0}'.format(ex))
         finally:
             if os.path.isdir(temp_dir):
                 shutil.rmtree(temp_dir)

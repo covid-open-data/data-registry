@@ -6,7 +6,7 @@ Daily cumulative case and death counts at different levels of geographic resolut
 ### Johns Hopkins University
 
 
-GitHub Repo: https://github.com/covid-open-data/xform-casecount-jhu
+Xform URL: https://github.com/covid-open-data/xform-casecount-jhu
 
 
 Source: https://github.com/CSSEGISandData/COVID-19
@@ -27,7 +27,7 @@ Terms of Use: https://github.com/CSSEGISandData/COVID-19/blob/master/README.md
 ### Johns Hopkins University
 
 
-GitHub Repo: https://github.com/covid-open-data/xform-casecount-us-jhu
+Xform URL: https://github.com/covid-open-data/xform-casecount-us-jhu
 
 
 Source: https://github.com/CSSEGISandData/COVID-19
@@ -47,7 +47,7 @@ Terms of Use: https://github.com/CSSEGISandData/COVID-19/blob/master/README.md
 ### New York Times
 
 
-GitHub Repo: https://github.com/covid-open-data/xform-casecount-us-nytimes
+Xform URL: https://github.com/covid-open-data/xform-casecount-us-nytimes
 
 
 Source: https://github.com/nytimes/covid-19-data
@@ -67,7 +67,7 @@ Terms of Use: https://github.com/nytimes/covid-19-data/blob/master/LICENSE
 ### USA FACTS
 
 
-GitHub Repo: https://github.com/covid-open-data/xform-casecount-us-usafacts
+Xform URL: https://github.com/covid-open-data/xform-casecount-us-usafacts
 
 
 Source: https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/
