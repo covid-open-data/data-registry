@@ -40,15 +40,16 @@ class GenerateRegistry:
 
     def _add_repos_to_md(self, repo_url, md_lines):
         # Fix up the URL so the local user can SSH clone the repo from GitHub.
-        if not repo_url.endswith('.git'):
-            repo_url = repo_url + '.git'
-        if repo_url.startswith('https://github.com/'):
-            repo_url = repo_url.replace('https://github.com/', 'git@github.com:')
+        repo_clone_url = repo_url
+        if not repo_clone_url.endswith('.git'):
+            repo_clone_url = repo_clone_url + '.git'
+        if repo_clone_url.startswith('https://github.com/'):
+            repo_clone_url = repo_clone_url.replace('https://github.com/', 'git@github.com:')
 
-        print('Processing repo: {0}'.format(repo_url))
+        print('Processing repo: {0}'.format(repo_clone_url))
         temp_dir = tempfile.mkdtemp()
         try:
-            sh.git.bake(_cwd=temp_dir).clone(repo_url, temp_dir)
+            sh.git.bake(_cwd=temp_dir).clone(repo_clone_url, temp_dir)
             print('Repo cloned to: {0}'.format(temp_dir))
 
             xform_yml_path = os.path.join(temp_dir, 'xform.yml')
@@ -58,6 +59,9 @@ class GenerateRegistry:
             yml_data = self.load_yml(xform_yml_path)
             md_lines.append(os.linesep)
             md_lines.append('### {0}'.format(yml_data['source_organization']))
+            md_lines.append(os.linesep)
+            md_lines.append('GitHub Repo: {0}'.format(repo_url))
+            md_lines.append(os.linesep)
             md_lines.append('Source: {0}'.format(yml_data['source_url']))
             md_lines.append(os.linesep)
             md_lines.append('Terms of Use: {0}'.format(yml_data['terms_of_use']))
