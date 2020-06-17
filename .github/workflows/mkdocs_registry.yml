@@ -1,0 +1,34 @@
+on:
+  watch:
+    types: [started]
+
+jobs:
+  run-xform:
+    runs-on: ubuntu-latest
+    name: Run Transformer
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Make Registry
+        run: |
+          pwd
+          pip3 install pipenv
+          make docs_registry
+      - name: Git Push
+        run: |
+          git config --global user.email "${GIT_EMAIL:-SYSTEM@users.noreply.github.com}"
+          git config --global user.name "${GIT_NAME:-SYSTEM}"
+          git add docs
+          git commit -m "Auto commit: $(date)"
+          git push
+      - name: Failure Notification
+        if: failure()
+        run: |
+          curl --request POST \
+          --url https://api.github.com/repos/${{ github.repository }}/issues \
+          --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          --header 'content-type: application/json' \
+          --data '{
+            "title": "GitHub Action FAILED",
+            "body": "This is an automated issue. See repo actions for details."
+            }'
