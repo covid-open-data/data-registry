@@ -1,6 +1,9 @@
+# NOTE: This action will not complete due to needing an SSH key in the "Git Push" step.
+# Test this workflow once the repo is moved to GitHub enterprise.
 on:
   watch:
     types: [started]
+# TODO: add trigger for on-push once this is working.
 
 jobs:
   run-make:

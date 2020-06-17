@@ -12,6 +12,7 @@ class GenerateRegistry:
     def __init__(self, yml_file, docs_path):
         self.yml_file = os.path.abspath(os.path.expanduser(yml_file))
         self.docs_path = os.path.abspath(os.path.expanduser(docs_path))
+        self.errors = []
 
         if not os.path.isfile(self.yml_file):
             raise FileNotFoundError(self.yml_file)
@@ -34,10 +35,13 @@ class GenerateRegistry:
             for repo in source['repos']:
                 self._add_repos_to_md(repo, md_lines)
 
-        with open(md_file_path, mode='w') as f:
-            f.writelines(os.linesep.join(md_lines))
         print('')
-        print('Doc created: {0}'.format(md_file_path))
+        if not self.errors:
+            with open(md_file_path, mode='w') as f:
+                f.writelines(os.linesep.join(md_lines))
+            print('Doc created: {0}'.format(md_file_path))
+        else:
+            print('Encountered errors. Doc not updated.')
 
     def _add_repos_to_md(self, repo_url, md_lines):
         # Fix up the URL so the local user can SSH clone the repo from GitHub.
@@ -114,7 +118,9 @@ class GenerateRegistry:
                     ))
 
         except Exception as ex:
-            print('Error processing repo: {0}'.format(ex))
+            err = 'Error processing repo: {0}'.format(ex)
+            print(err)
+            self.errors.append(err)
         finally:
             if os.path.isdir(temp_dir):
                 shutil.rmtree(temp_dir)
