@@ -1,6 +1,16 @@
+.PHONY: pipenv_install
+pipenv_install:
+	pipenv install --dev
+
+
 .PHONY: pip_install
 pip_install:
-	pipenv install --dev
+	pip3 install -r requirements.txt
+
+
+.PHONY: reqs_txt
+reqs_txt:
+	pipenv lock -r > requirements.txt
 
 
 .PHONY: registry
