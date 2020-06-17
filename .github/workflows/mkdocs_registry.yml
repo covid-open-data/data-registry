@@ -16,7 +16,7 @@ jobs:
           export PATH="$PATH:$HOME/.local/bin"
           pip3 install -U pip setuptools
           pip3 install pipenv
-          make -C scripts/mkdocs pip_install
+          pipenv run make -C scripts/mkdocs pip_install
           pipenv run make docs_registry
       - name: Git Push
         run: |
