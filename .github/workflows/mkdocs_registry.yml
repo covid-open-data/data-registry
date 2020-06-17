@@ -12,7 +12,9 @@ jobs:
       - name: Make Registry
         run: |
           pwd
+          ls -al
           pip3 install pipenv
+          make -C scripts/mkdocs pip_install
           make docs_registry
       - name: Git Push
         run: |
