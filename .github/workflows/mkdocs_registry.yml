@@ -17,7 +17,7 @@ jobs:
           pip3 install -U pip setuptools
           pip3 install pipenv
           make -C scripts/mkdocs pip_install
-          make docs_registry
+          pipenv run make docs_registry
       - name: Git Push
         run: |
           git config --global user.email "${GIT_EMAIL:-SYSTEM@users.noreply.github.com}"
