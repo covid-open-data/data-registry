@@ -11,6 +11,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Make Registry
         run: |
+          pip3 install -U pip setuptools
           make -C scripts/mkdocs pip_install
           make docs_registry
       - name: Git Push
