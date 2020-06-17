@@ -13,6 +13,7 @@ jobs:
         run: |
           pwd
           ls -al
+          pip3 install -U pip setuptools
           pip3 install pipenv
           make -C scripts/mkdocs pip_install
           make docs_registry
