@@ -32,7 +32,7 @@
       "type": "integer",
       "name": "cases",
       "required": true,
-      "null_or_empty": false,
+      "null_or_empty": true,
       "regex": null,
       "min": 0,
       "max": null
@@ -41,7 +41,7 @@
       "type": "integer",
       "name": "deaths",
       "required": true,
-      "null_or_empty": false,
+      "null_or_empty": true,
       "regex": null,
       "min": 0,
       "max": null
